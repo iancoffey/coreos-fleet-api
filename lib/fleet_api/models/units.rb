@@ -1,6 +1,6 @@
 class FleetAPI::Client::Units < Cistern::Collection
   include FleetAPI::Collection
-  include FleetAPI::PagedCollection
+  include FleetAPI::PaginatedCollection
 
   model FleetAPI::Client::Unit
 
