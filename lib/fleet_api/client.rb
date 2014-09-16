@@ -9,6 +9,10 @@ class FleetAPI::Client < Cistern::Service
   request "destroy_unit"
   collection "units"
 
+  model "machine"
+  request "get_machines"
+  collection "machines"
+
   recognizes :logger, :url
 
   class Real

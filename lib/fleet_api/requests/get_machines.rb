@@ -1,19 +1,20 @@
 class FleetAPI::Client
   class Real
-    def get_units(params={})
+    def get_machines(params={})
       request(
+        :query  => query,
         :method => 'GET',
-        :path   => "v1-alpha/units",
+        :path   => "v1-alpha/machines",
       )
     end
   end
 
   class Mock
-    def get_units(params={})
-      units = self.data['units']
+    def get_machines(params={})
+      units = self.data['machines']
 
       response(
-        :body    => {"units" => units},
+        :body    => {"machines" => machines},
         :status  => 200,
         :headers => {
           "Content-Type" => "application/json; charset=utf8",
