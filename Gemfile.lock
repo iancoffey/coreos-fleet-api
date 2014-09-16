@@ -3,7 +3,7 @@ PATH
   specs:
     coreos-fleet-api (0.1.0)
       addressable (~> 2.2)
-      cistern (~> 0.6)
+      cistern (~> 0.11)
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
 

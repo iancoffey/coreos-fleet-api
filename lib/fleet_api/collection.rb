@@ -22,7 +22,7 @@ module FleetAPI::Collection
   end
 
   def get(id)
-    if data = connection.send(self.model_request, {"id" => id}).body[self.model_root]
+    if data = connection.send(self.model_request, {"name" => id}).body[self.model_root] # hax
       new(data)
     else
       nil

@@ -5,7 +5,7 @@ class FleetAPI::Client::Machines < Cistern::Collection
   model FleetAPI::Client::Machine
 
   model_root "machine"
-#  model_request :get_machine
+  model_request :get_machine
   collection_root "machines"
   collection_request :get_machines
 end

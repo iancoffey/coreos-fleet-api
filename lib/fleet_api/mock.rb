@@ -15,5 +15,9 @@ module FleetAPI
         end
       end
     end
+
+    def self.random_name
+      SecureRandom.hex(6)
+    end
   end
 end

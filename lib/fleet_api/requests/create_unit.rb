@@ -11,12 +11,12 @@ class FleetAPI::Client
 
   class Mock
     def create_unit(params={})
-      unit = params.delete('unit')
-      unit['id'] = FleetAPI::Mock.random_id
-      self.data[:units][unit['id']] = unit
+      params['machineID'] = FleetAPI::Mock.random_id
+
+      self.data[:units][params['name']] = params
 
       response(
-        :body   => {"unit" => unit},
+        :body   => {"unit" => self.data[:units][params['name']]},
         :status => 200,
       )
     end

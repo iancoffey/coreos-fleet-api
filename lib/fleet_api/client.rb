@@ -6,6 +6,7 @@ class FleetAPI::Client < Cistern::Service
   request "get_unit"
   request "get_units"
   request "create_unit"
+  request "update_unit"
   request "destroy_unit"
   collection "units"
 
@@ -69,8 +70,8 @@ class FleetAPI::Client < Cistern::Service
 
     def self.data
       @data ||= {
-        :servers => {},
-        :notifications => {},
+        :units => {},
+        :machines => {},
        }
     end
 
@@ -102,6 +103,21 @@ class FleetAPI::Client < Cistern::Service
           :headers => headers,
         }
       ).raise!
+    end
+
+    def page(params, collection, object_root, options={})
+      resources   = options[:resources] || self.data[collection]
+      page_size   = (params["per_page"] || 20).to_i
+      page_index  = (params["page"] || 1).to_i
+      offset      = (page_index - 1) * page_size
+
+      resource_page = resources.values.reverse.slice(offset, page_size)
+
+      resource_page
+    end
+
+    def url_for_page(collection, token)
+      "<#{File.join(@url, collection.to_s)}??nextPageToken=#{token}"
     end
   end
 end

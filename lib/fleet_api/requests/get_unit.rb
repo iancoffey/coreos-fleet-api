@@ -12,8 +12,8 @@ class FleetAPI::Client
   end
 
   class Mock
-    def get_notification(params={})
-      id = params['name']
+    def get_unit(params={})
+      name = params['name']
 
       if unit = self.data[:units][name]
         response(

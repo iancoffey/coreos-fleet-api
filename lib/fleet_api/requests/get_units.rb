@@ -10,7 +10,7 @@ class FleetAPI::Client
 
   class Mock
     def get_units(params={})
-      units = self.data['units']
+      units = page(params, :units, "unit")
 
       response(
         :body    => {"units" => units},

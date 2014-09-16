@@ -7,14 +7,14 @@ class FleetAPI::Client::Unit < FleetAPI::Model
   attribute :options
 
   def save
-    requires :server_id, :severity, :type
-
+    requires :name
     params = {
       "desiredState" => self.desiredState,
-      "options" => self.options
+      "options" => self.options,
+      "name" => self.name
     }
 
-    if new_record?
+    unless self.machineID # hax
       request_attributes = connection.create_unit(params).body
     else
       params["name"] = self.name
