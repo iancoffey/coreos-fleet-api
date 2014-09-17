@@ -1,10 +1,12 @@
 class FleetAPI::Client
   class Real
     def create_unit(params={})
+      name = params["name"]
+
       request(
         :body   => params,
         :method => 'PUT',
-        :path => "v1-alpha/units",
+        :path => "v1-alpha/units/#{name}",
       )
     end
   end
